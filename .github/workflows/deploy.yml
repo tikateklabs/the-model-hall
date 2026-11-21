@@ -32,6 +32,8 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build static bundle
+        env:
+          VITE_NEWSLETTER_EMAIL: ${{ vars.VITE_NEWSLETTER_EMAIL }}
         run: npm run build
 
       - name: Prepare GitHub Pages SPA fallback and .nojekyll

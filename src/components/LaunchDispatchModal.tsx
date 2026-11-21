@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   CalendarClock,
@@ -7,6 +7,7 @@ import {
   ExternalLink,
   Mail,
   Rss,
+  Send,
   Sparkles,
   X,
 } from 'lucide-react';
@@ -21,20 +22,20 @@ interface LaunchDispatchModalProps {
   onInspectCandidate: (candidateId: string) => void;
 }
 
-interface SavedSubscription {
-  email: string;
+interface SavedPreferences {
   labs: LabId[];
   modalities: ModalityKey[];
-  savedAt: string;
+  openedMailAt?: string;
 }
 
-const STORAGE_KEY = 'model_hall_friday_newsletter_v1';
+const STORAGE_KEY = 'model_hall_friday_newsletter_v2';
 
-// Optional static form endpoint (e.g. Buttondown, Beehiiv, ConvertKit) — set VITE_NEWSLETTER_FORM_URL if deploying with a live mailing list.
-const NEWSLETTER_ENDPOINT = (
+const NEWSLETTER_EMAIL = (
   (import.meta as unknown as { env?: Record<string, string | undefined> }).env
-    ?.VITE_NEWSLETTER_FORM_URL ?? ''
+    ?.VITE_NEWSLETTER_EMAIL || 'tikateklabs@gmail.com'
 ).trim();
+
+const FIXED_SUBJECT = 'Subscribe: The Model Hall — Free Friday AI Newsletter';
 
 const FRIDAY_ARRIVALS = [
   {
@@ -95,24 +96,21 @@ export const LaunchDispatchModal: React.FC<LaunchDispatchModalProps> = ({
   onInspectCandidate,
 }) => {
   const [activeTab, setActiveTab] = useState<'subscribe' | 'arrivals'>('subscribe');
-  const [email, setEmail] = useState('');
   const [selectedLabs, setSelectedLabs] = useState<LabId[]>([
     'anthropic',
     'google',
     'openai',
     'deepseek',
     'meta',
-    'xai',
-    'mistral',
-    'qwen',
   ]);
   const [selectedMods, setSelectedMods] = useState<ModalityKey[]>([
+    'vision',
     'video',
     'code',
     'imageGen',
-    'videoGen',
   ]);
-  const [savedSub, setSavedSub] = useState<SavedSubscription | null>(null);
+  const [mailTriggered, setMailTriggered] = useState(false);
+  const [copiedDetails, setCopiedDetails] = useState(false);
   const [rssCopied, setRssCopied] = useState(false);
 
   const isBlueprint = viewMode === 'blueprint';
@@ -130,11 +128,16 @@ export const LaunchDispatchModal: React.FC<LaunchDispatchModalProps> = ({
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
-        const parsed = JSON.parse(raw) as SavedSubscription;
-        setSavedSub(parsed);
-        setEmail(parsed.email);
-        setSelectedLabs(parsed.labs);
-        setSelectedMods(parsed.modalities);
+        const parsed = JSON.parse(raw) as SavedPreferences;
+        if (Array.isArray(parsed.labs) && parsed.labs.length > 0) {
+          setSelectedLabs(parsed.labs);
+        }
+        if (Array.isArray(parsed.modalities)) {
+          setSelectedMods(parsed.modalities);
+        }
+        if (parsed.openedMailAt) {
+          setMailTriggered(true);
+        }
       }
     } catch {
       // Ignore storage read errors
@@ -153,34 +156,77 @@ export const LaunchDispatchModal: React.FC<LaunchDispatchModalProps> = ({
     );
   };
 
-  const handleSaveSubscription = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cleaned = email.trim();
-    if (!cleaned) return;
+  const prefilledBody = useMemo(() => {
+    const labNames =
+      selectedLabs.length > 0
+        ? selectedLabs.map((id) => LAB_META[id].name).join(', ')
+        : 'All Major AI Labs';
+    const modNames =
+      selectedMods.length > 0
+        ? selectedMods
+            .map((key) => MODALITY_ITEMS.find((m) => m.key === key)?.label ?? key)
+            .join(', ')
+        : 'All Capabilities';
 
-    const payload: SavedSubscription = {
-      email: cleaned,
-      labs: selectedLabs.length > 0 ? selectedLabs : ['anthropic', 'google', 'openai'],
-      modalities: selectedMods,
-      savedAt: new Date().toLocaleDateString(),
-    };
+    return [
+      'Hi,',
+      '',
+      'Please subscribe my email address to The Model Hall — Always-Free Friday AI Intuition Newsletter so I receive the weekly Friday update whenever new AI models enter the Hall.',
+      '',
+      `Labs I want to follow: ${labNames}`,
+      `Capabilities I care about: ${modNames}`,
+      '',
+      'Thank you!',
+    ].join('\n');
+  }, [selectedLabs, selectedMods]);
 
+  const mailtoHref = useMemo(() => {
+    const subject = encodeURIComponent(FIXED_SUBJECT);
+    const body = encodeURIComponent(prefilledBody);
+    return `mailto:${NEWSLETTER_EMAIL}?subject=${subject}&body=${body}`;
+  }, [prefilledBody]);
+
+  const gmailComposeHref = useMemo(() => {
+    const params = new URLSearchParams({
+      view: 'cm',
+      fs: '1',
+      to: NEWSLETTER_EMAIL,
+      su: FIXED_SUBJECT,
+      body: prefilledBody,
+    });
+    return `https://mail.google.com/mail/?${params.toString()}`;
+  }, [prefilledBody]);
+
+  const recordMailClick = () => {
+    setMailTriggered(true);
     try {
+      const payload: SavedPreferences = {
+        labs: selectedLabs,
+        modalities: selectedMods,
+        openedMailAt: new Date().toLocaleDateString(),
+      };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
     } catch {
-      // Ignore storage quota errors
+      // Ignore storage errors
     }
-    setSavedSub(payload);
+  };
 
-    if (NEWSLETTER_ENDPOINT) {
-      fetch(NEWSLETTER_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      }).catch(() => {
-        // Static fallback already saved locally
-      });
+  const handleCopyEmailDetails = async () => {
+    const fullText = `To: ${NEWSLETTER_EMAIL}\nSubject: ${FIXED_SUBJECT}\n\n${prefilledBody}`;
+    try {
+      await navigator.clipboard.writeText(fullText);
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = fullText;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
     }
+    setCopiedDetails(true);
+    window.setTimeout(() => setCopiedDetails(false), 2200);
   };
 
   const getRssUrl = () => {
@@ -296,7 +342,7 @@ export const LaunchDispatchModal: React.FC<LaunchDispatchModalProps> = ({
                 }`}
               >
                 <CalendarClock className="w-3.5 h-3.5" />
-                Subscribe (Always Free)
+                Subscribe via Email (Free)
               </button>
               <button
                 type="button"
@@ -320,7 +366,7 @@ export const LaunchDispatchModal: React.FC<LaunchDispatchModalProps> = ({
             <div className="p-6 overflow-y-auto space-y-5">
               {activeTab === 'subscribe' ? (
                 <>
-                  {/* Friday Refresh Promise Banner */}
+                  {/* Clear 1-Click Email Explanation */}
                   <div
                     className={`rounded-xl border p-4 text-xs sm:text-[13px] leading-relaxed ${
                       isBlueprint
@@ -329,124 +375,171 @@ export const LaunchDispatchModal: React.FC<LaunchDispatchModalProps> = ({
                     }`}
                   >
                     <strong className={isBlueprint ? 'text-white' : 'text-[#111827]'}>
-                      What arrives every Friday (always 100% free):
+                      One-click email subscribe (always 100% free, zero tracking):
                     </strong>{' '}
-                    Which newly launched models actually earned a seat in The Model Hall, what kind
-                    of tasks they change, and one simple intuition rule you can remember in 60 seconds.
+                    Pick the AI labs and capabilities you care about below, then click{' '}
+                    <strong>Subscribe via Email</strong>—your mail app opens with the subject and
+                    message already filled in. Just hit <strong>Send</strong>.
                   </div>
 
-                  {/* Email Subscription Form */}
-                  <form onSubmit={handleSaveSubscription} className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="friday-newsletter-email"
-                        className="block text-xs font-bold uppercase tracking-wider mb-1.5"
-                      >
-                        Get the Weekly Friday Update
-                      </label>
-                      <div className="flex flex-col sm:flex-row gap-2">
-                        <input
-                          id="friday-newsletter-email"
-                          type="email"
-                          required
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="you@example.com"
-                          className={`flex-1 px-3.5 py-2.5 rounded-xl border-[1.5px] text-sm focus:outline-none focus:ring-2 ${
-                            isBlueprint
-                              ? 'bg-[#0B172A] border-[#38BDF8]/70 text-white placeholder:text-[#64748B] focus:ring-[#38BDF8]/40'
-                              : 'bg-[#FFFDF9] border-[#111827] text-[#111827] placeholder:text-[#94A3B8] focus:ring-[#E85D4A]/40'
-                          }`}
-                        />
-                        <button
-                          type="submit"
-                          className="px-5 py-2.5 rounded-xl bg-[#E85D4A] hover:bg-[#D44B39] text-white font-bold text-sm border-[1.5px] border-[#111827] transition-colors cursor-pointer whitespace-nowrap"
-                        >
-                          {savedSub ? 'Update Preferences' : 'Subscribe — Always Free'}
-                        </button>
-                      </div>
+                  {/* Lab Interests (updates prefilled email live) */}
+                  <div className="space-y-2">
+                    <span className="block text-xs font-semibold opacity-80">
+                      1. Optional — Labs you want to follow every Friday:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {(Object.keys(LAB_META) as LabId[]).map((lab) => {
+                        const active = selectedLabs.includes(lab);
+                        const meta = LAB_META[lab];
+                        return (
+                          <button
+                            key={lab}
+                            type="button"
+                            onClick={() => toggleLab(lab)}
+                            className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
+                              active
+                                ? 'text-white border-[#111827]'
+                                : isBlueprint
+                                ? 'bg-[#0B172A] border-[#1E3A5F] text-[#94A3B8]'
+                                : 'bg-[#FFFDF9] border-[#111827]/25 text-[#475569]'
+                            }`}
+                            style={active ? { backgroundColor: meta.color } : undefined}
+                          >
+                            {active ? '✓ ' : '+ '}
+                            {meta.name}
+                          </button>
+                        );
+                      })}
                     </div>
+                  </div>
 
-                    {/* Lab Watchlist */}
-                    <div className="space-y-2">
-                      <span className="block text-xs font-semibold opacity-80">
-                        Labs you want to follow every Friday:
+                  {/* Modality Interests (updates prefilled email live) */}
+                  <div className="space-y-2">
+                    <span className="block text-xs font-semibold opacity-80">
+                      2. Optional — Capabilities you care about:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {MODALITY_ITEMS.map((item) => {
+                        const active = selectedMods.includes(item.key);
+                        return (
+                          <button
+                            key={item.key}
+                            type="button"
+                            onClick={() => toggleMod(item.key)}
+                            className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
+                              active
+                                ? isBlueprint
+                                  ? 'bg-[#0C4A6E] border-[#38BDF8] text-[#E0F2FE]'
+                                  : 'bg-[#1F7A73] border-[#111827] text-white'
+                                : isBlueprint
+                                ? 'bg-[#0B172A] border-[#1E3A5F] text-[#94A3B8]'
+                                : 'bg-[#FFFDF9] border-[#111827]/25 text-[#475569]'
+                            }`}
+                          >
+                            {active ? '✓ ' : '+ '}
+                            {item.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Prefilled Email Preview Box */}
+                  <div
+                    className={`rounded-xl border p-3.5 space-y-2 text-xs ${
+                      isBlueprint
+                        ? 'bg-[#0B172A] border-[#1E3A5F] text-[#CBD5E1]'
+                        : 'bg-[#FFFDF9] border-[#111827]/25 text-[#334155]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2 pb-2 border-b border-current/10 flex-wrap">
+                      <div>
+                        <span className="font-bold opacity-70">To: </span>
+                        <span className="font-mono font-semibold">{NEWSLETTER_EMAIL}</span>
+                      </div>
+                      <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#1F7A73]">
+                        Prefilled &amp; Ready
                       </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {(Object.keys(LAB_META) as LabId[]).map((lab) => {
-                          const active = selectedLabs.includes(lab);
-                          const meta = LAB_META[lab];
-                          return (
-                            <button
-                              key={lab}
-                              type="button"
-                              onClick={() => toggleLab(lab)}
-                              className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
-                                active
-                                  ? 'text-white border-[#111827]'
-                                  : isBlueprint
-                                  ? 'bg-[#0B172A] border-[#1E3A5F] text-[#94A3B8]'
-                                  : 'bg-[#FFFDF9] border-[#111827]/25 text-[#475569]'
-                              }`}
-                              style={active ? { backgroundColor: meta.color } : undefined}
-                            >
-                              {active ? '✓ ' : '+ '}
-                              {meta.name}
-                            </button>
-                          );
-                        })}
-                      </div>
                     </div>
-
-                    {/* Modality Watchlist */}
-                    <div className="space-y-2">
-                      <span className="block text-xs font-semibold opacity-80">
-                        Alert me when new models improve:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {MODALITY_ITEMS.map((item) => {
-                          const active = selectedMods.includes(item.key);
-                          return (
-                            <button
-                              key={item.key}
-                              type="button"
-                              onClick={() => toggleMod(item.key)}
-                              className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition-colors cursor-pointer ${
-                                active
-                                  ? isBlueprint
-                                    ? 'bg-[#0C4A6E] border-[#38BDF8] text-[#E0F2FE]'
-                                    : 'bg-[#1F7A73] border-[#111827] text-white'
-                                  : isBlueprint
-                                  ? 'bg-[#0B172A] border-[#1E3A5F] text-[#94A3B8]'
-                                  : 'bg-[#FFFDF9] border-[#111827]/25 text-[#475569]'
-                              }`}
-                            >
-                              {active ? '✓ ' : '+ '}
-                              {item.label}
-                            </button>
-                          );
-                        })}
-                      </div>
+                    <div className="pb-2 border-b border-current/10">
+                      <span className="font-bold opacity-70">Subject: </span>
+                      <span className="font-semibold">{FIXED_SUBJECT}</span>
                     </div>
+                    <pre className="whitespace-pre-wrap font-sans text-[11.5px] leading-relaxed opacity-90">
+                      {prefilledBody}
+                    </pre>
+                  </div>
 
-                    {savedSub && (
-                      <div
-                        className={`rounded-xl border px-4 py-3 text-xs flex items-center gap-2.5 ${
+                  {/* Primary + Webmail + Copy Action Buttons */}
+                  <div className="space-y-2.5">
+                    <a
+                      href={mailtoHref}
+                      onClick={recordMailClick}
+                      className="w-full py-3 px-5 rounded-xl bg-[#E85D4A] hover:bg-[#D44B39] text-white font-bold text-sm border-[1.5px] border-[#111827] inline-flex items-center justify-center gap-2 transition-colors shadow-[3px_3px_0px_#111827]"
+                    >
+                      <Send className="w-4 h-4" />
+                      <span>Open Mail App &amp; Subscribe (Always Free)</span>
+                    </a>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <a
+                        href={gmailComposeHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={recordMailClick}
+                        className={`py-2 px-3.5 rounded-xl border-[1.5px] text-xs font-bold inline-flex items-center justify-center gap-1.5 transition-colors ${
                           isBlueprint
-                            ? 'bg-[#0C3547] border-[#38BDF8] text-[#BAE6FD]'
-                            : 'bg-[#E5F2EE] border-[#1F7A73] text-[#115E59]'
+                            ? 'bg-[#11223A] border-[#38BDF8]/70 text-[#BAE6FD] hover:bg-[#1E3A5F]'
+                            : 'bg-[#FFFDF9] border-[#111827] text-[#111827] hover:bg-[#EFE8DC]'
                         }`}
                       >
-                        <Check className="w-4 h-4 shrink-0" />
-                        <span>
-                          You&rsquo;re on the Friday list as <strong>{savedSub.email}</strong> (
-                          {savedSub.labs.length} labs tracked · saved {savedSub.savedAt}). You can
-                          also plug the static RSS feed below into any reader for zero-tracking
-                          Friday alerts.
-                        </span>
-                      </div>
-                    )}
-                  </form>
+                        <Mail className="w-3.5 h-3.5" />
+                        <span>Open in Gmail (Web)</span>
+                        <ExternalLink className="w-3 h-3 opacity-70" />
+                      </a>
+
+                      <button
+                        type="button"
+                        onClick={handleCopyEmailDetails}
+                        className={`py-2 px-3.5 rounded-xl border-[1.5px] text-xs font-bold inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
+                          copiedDetails
+                            ? 'bg-[#1F7A73] border-[#111827] text-white'
+                            : isBlueprint
+                            ? 'bg-[#11223A] border-[#38BDF8]/70 text-[#BAE6FD] hover:bg-[#1E3A5F]'
+                            : 'bg-[#FFFDF9] border-[#111827] text-[#111827] hover:bg-[#EFE8DC]'
+                        }`}
+                      >
+                        {copiedDetails ? (
+                          <>
+                            <Check className="w-3.5 h-3.5" />
+                            <span>Copied Email &amp; Message!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-3.5 h-3.5" />
+                            <span>Copy Email &amp; Message</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {mailTriggered && (
+                    <div
+                      className={`rounded-xl border px-4 py-3 text-xs flex items-center gap-2.5 ${
+                        isBlueprint
+                          ? 'bg-[#0C3547] border-[#38BDF8] text-[#BAE6FD]'
+                          : 'bg-[#E5F2EE] border-[#1F7A73] text-[#115E59]'
+                      }`}
+                    >
+                      <Check className="w-4 h-4 shrink-0" />
+                      <span>
+                        Your prefilled subscription email opened for <strong>{NEWSLETTER_EMAIL}</strong>.
+                        Once you hit <strong>Send</strong> in your mail app, you&rsquo;re on the
+                        Friday list!
+                      </span>
+                    </div>
+                  )}
 
                   {/* Static RSS 2.0 Feed Card */}
                   <div
