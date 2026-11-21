@@ -1,0 +1,90 @@
+[
+  {
+    "id": "artificial_analysis",
+    "name": "Artificial Analysis",
+    "organization": "Artificial Analysis (Independent)",
+    "url": "https://artificialanalysis.ai/leaderboards/models",
+    "metricFocus": "Intelligence Index, Real API $/Task & First-Token Speed",
+    "whatItMeasures": "Runs identical standardized reasoning, coding, and knowledge suites across live commercial & open-weight endpoints while clocking real API latency (time to first token), throughput (tokens/sec), and exact dollar cost per task.",
+    "whyTrustIt": "No self-reported vendor numbers—Artificial Analysis queries live production APIs continuously so you see true speed and pricing trade-offs alongside capability.",
+    "knownBlindSpot": "Synthetic composite scores don't capture subtle brand voice, long-horizon agent tool failures, or private enterprise RAG accuracy.",
+    "bestForTasks": "Comparing cost-per-task, speed vs. IQ trade-offs, and 2-person team split economics."
+  },
+  {
+    "id": "swebench",
+    "name": "SWE-bench Verified",
+    "organization": "Princeton NLP & OpenAI Verified Subset",
+    "url": "https://www.swebench.com/",
+    "metricFocus": "Autonomous Multi-File GitHub Bug Fixing",
+    "whatItMeasures": "Gives AI models real, unresolved GitHub issues from major open-source Python repositories and grades them strictly on whether their generated code patch passes the repository's real unit test suite.",
+    "whyTrustIt": "You can't bluff a passing test suite. It mirrors genuine software engineering debugging rather than toy LeetCode puzzles.",
+    "knownBlindSpot": "Skews heavily toward Python backend repos; less coverage of frontend CSS/UI polish, DevOps, or greenfield system architecture.",
+    "bestForTasks": "Debugging gnarly codebases, legacy refactoring, and automated unit test generation."
+  },
+  {
+    "id": "lmarena",
+    "name": "LMArena (Chatbot Arena)",
+    "organization": "LMSYS Org (UC Berkeley)",
+    "url": "https://lmarena.ai/",
+    "metricFocus": "Crowdsourced Blind Human Preference Elo",
+    "whatItMeasures": "Millions of everyday users type real prompts, see two anonymous model responses side-by-side, and vote on which answer actually helped them more—producing chess-style Elo rankings.",
+    "whyTrustIt": "Hard to game because prompts are open-ended and voters don't know which lab generated which reply until after voting.",
+    "knownBlindSpot": "Humans can be charmed by confident formatting, verbosity, or polite tone—even when an answer hides a subtle factual or legal mistake.",
+    "bestForTasks": "Everyday writing, marketing copy, teaching clarity, polite emails, and tone warmth."
+  },
+  {
+    "id": "livebench",
+    "name": "LiveBench",
+    "organization": "Abacus.AI, NYU & Collaborators",
+    "url": "https://www.livebench.ai/",
+    "metricFocus": "Contamination-Free Monthly Reasoning & Math",
+    "whatItMeasures": "Releases brand-new questions every month pulled from recent arXiv papers, news, math competitions, and coding challenges—with objective automated grading (no LLM judge bias).",
+    "whyTrustIt": "Eliminates 'test set memorization' (contamination) because models couldn't possibly have seen this month's fresh problems during training.",
+    "knownBlindSpot": "Focuses on hard objective puzzles; doesn't evaluate creative storytelling, audio/video perception, or empathetic human coaching.",
+    "bestForTasks": "High-stakes logic, financial/legal reasoning checks, and verifying genuine reasoning gains."
+  },
+  {
+    "id": "mmmu_pro",
+    "name": "MMMU & MMMU-Pro",
+    "organization": "Multi-University Multimodal Consortium",
+    "url": "https://mmmu-benchmark.github.io/",
+    "metricFocus": "College-Level Vision, Diagrams, Charts & Media",
+    "whatItMeasures": "Tests whether a model truly understands visual information—engineering schematics, medical scans, sheet music, financial charts, and UI screenshots—across 30 expert disciplines.",
+    "whyTrustIt": "MMMU-Pro strips out questions that can be guessed from text alone, proving whether the model genuinely sees pixels vs. guessing.",
+    "knownBlindSpot": "Primarily evaluates static images and structured visual frames; long-form continuous video and live voice prosody need additional media tests.",
+    "bestForTasks": "UI screenshot debugging, chart/PDF extraction, lecture videos, and photo diagnostics."
+  },
+  {
+    "id": "stanford_helm",
+    "name": "Stanford HELM",
+    "organization": "Stanford Center for Research on Foundation Models",
+    "url": "https://crfm.stanford.edu/helm/",
+    "metricFocus": "Holistic Accuracy, Calibration, Honesty & Safety",
+    "whatItMeasures": "Evaluates models across seven dimensions simultaneously—accuracy, calibration (knowing when it's unsure), robustness, fairness, bias, toxicity, and efficiency—across legal, medical, and enterprise domains.",
+    "whyTrustIt": "Peer-reviewed academic rigor that exposes hidden failure modes like overconfidence and sycophancy that leaderboard headlines hide.",
+    "knownBlindSpot": "Academic evaluation cycles update slightly slower than day-one frontier API drops.",
+    "bestForTasks": "Legal/compliance audits, citation fact-checking, enterprise RAG, and high-stakes honesty."
+  },
+  {
+    "id": "hf_open_llm",
+    "name": "Open LLM Leaderboard",
+    "organization": "Hugging Face",
+    "url": "https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard",
+    "metricFocus": "Reproducible Open-Weight Model Benchmarks",
+    "whatItMeasures": "Evaluates downloadable open-weight models (Llama, Qwen, DeepSeek, Mistral) under identical open harness settings across MMLU-Pro, GPQA, MATH, MuSR, and IFEval instruction following.",
+    "whyTrustIt": "100% open, reproducible test harness—vital for teams deciding whether a self-hosted open-weight model can replace a proprietary API.",
+    "knownBlindSpot": "Covers open-weight checkpoints only; closed proprietary APIs (Claude, GPT, Gemini) are tracked separately.",
+    "bestForTasks": "Choosing private, self-hosted, or VPC-deployed open-weight models (Llama 4, Qwen 3, DeepSeek, Mistral)."
+  },
+  {
+    "id": "epoch_ai",
+    "name": "Epoch AI Benchmarks",
+    "organization": "Epoch AI Research Institute",
+    "url": "https://epoch.ai/benchmarks",
+    "metricFocus": "FrontierMath, GPQA Diamond & Frontier Tracking",
+    "whatItMeasures": "Maintains independent PhD-level scientific reasoning (GPQA Diamond), research-grade mathematics (FrontierMath), and longitudinal cost/compute trend datasets across major AI labs.",
+    "whyTrustIt": "Respected non-profit research institute focused on clean methodology, uncontaminated expert-authored math, and transparent frontier trend analysis.",
+    "knownBlindSpot": "Ultra-hard research benchmarks mostly separate the top Principal tier and don't tell you which 15¢ Associate writes the warmest email.",
+    "bestForTasks": "Validating Principal-tier research, PhD paper synthesis, and deep technical breakthroughs."
+  }
+]

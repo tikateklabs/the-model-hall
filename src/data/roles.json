@@ -1,0 +1,91 @@
+[
+  {
+    "id": "teacher",
+    "label": "Teacher & Educator",
+    "shortLabel": "Teacher & Educator",
+    "tagline": "Question papers, lecture videos, rubrics, and kid-friendly breakdowns.",
+    "iconKey": "book",
+    "defaultBucket": "education_papers",
+    "starterChips": [
+      "Create a question paper from chapter notes",
+      "Break down a 20-min lecture video into study guides",
+      "Explain a hard concept simply for kids",
+      "Draft rubric feedback for 40 essays",
+      "Build a 45-min interactive lesson plan"
+    ]
+  },
+  {
+    "id": "engineer",
+    "label": "Software Engineer",
+    "shortLabel": "Software Engineer",
+    "tagline": "Unit tests, gnarly debugging, UI screenshots, refactoring, and log parsing.",
+    "iconKey": "code",
+    "defaultBucket": "coding_debugging",
+    "starterChips": [
+      "Write unit tests & catch edge cases",
+      "Debug a gnarly architecture bug",
+      "Debug a UI bug from a screenshot & screen recording",
+      "Refactor legacy code cleanly",
+      "Parse 500 messy JSON logs cheaply"
+    ]
+  },
+  {
+    "id": "marketing",
+    "label": "Marketing & Brand",
+    "shortLabel": "Marketing & Brand",
+    "tagline": "Brochure visuals, punchy ad hooks, competitor PDFs, and launch drops.",
+    "iconKey": "megaphone",
+    "defaultBucket": "marketing_creative",
+    "starterChips": [
+      "Design a product brochure & generate hero visual",
+      "Write 20 punchy ad hook variations",
+      "Tear down a competitor strategy PDF",
+      "Draft a warm product launch email"
+    ]
+  },
+  {
+    "id": "manager",
+    "label": "Manager & Founder",
+    "shortLabel": "Manager & Founder",
+    "tagline": "Lease audits, inbox triage, voice-memo recaps, and 60-page board reports.",
+    "iconKey": "briefcase",
+    "defaultBucket": "legal_audit",
+    "starterChips": [
+      "Check a rental or vendor lease for traps",
+      "Sort 1,000 customer emails cheaply",
+      "Transcribe & action a 15-min voice memo",
+      "Summarize a 60-page board report",
+      "Push back politely on scope creep"
+    ]
+  },
+  {
+    "id": "student",
+    "label": "Student & Researcher",
+    "shortLabel": "Student & Researcher",
+    "tagline": "Flashcards, citation fact-checks, lecture videos, and human-sounding essays.",
+    "iconKey": "graduation",
+    "defaultBucket": "long_document",
+    "starterChips": [
+      "Turn lecture notes into flashcards",
+      "Fact-check citations without bluffing",
+      "Summarize a 45-min recorded seminar video",
+      "Explain a dense research paper",
+      "Polish my essay without AI slop"
+    ]
+  },
+  {
+    "id": "personal",
+    "label": "Everyday Personal",
+    "shortLabel": "Everyday Personal",
+    "tagline": "Polite boundaries, policy audits, photo diagnostics, and budget trips.",
+    "iconKey": "coffee",
+    "defaultBucket": "everyday_comms",
+    "starterChips": [
+      "Write a polite no to my boss",
+      "Compare two insurance policies",
+      "Diagnose a dashboard warning from a photo",
+      "Plan a 5-day budget family trip",
+      "Prep me for a tough job interview"
+    ]
+  }
+]

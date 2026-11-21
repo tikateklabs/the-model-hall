@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>The Model Hall — Weekly Friday AI Model Updates (Always Free)</title>
+    <link>./</link>
+    <description>Refreshed every Friday with newly launched AI models, plain-English picking intuition rules, and verified benchmark snapshots across 11 labs. Always 100% free.</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Nov 2026 12:00:00 GMT</lastBuildDate>
+
+    <item>
+      <title>FRIDAY DROP: Gemini 4 Neon (Xhigh) by Google joins Corner-Office Principals</title>
+      <link>./?selected=gemini-4-neon</link>
+      <guid isPermaLink="false">model-hall-gemini-4-neon-2026-11</guid>
+      <pubDate>Fri, 20 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Google's Sharp Polymath enters with AA Intelligence Index 61, native Video + Audio + Vision + Code over a 1M context window, and a 56.5s first-token start (~4x faster than rival Principals) at $6.44/task.</description>
+    </item>
+
+    <item>
+      <title>FRIDAY DROP: Claude Fable 5.2 (Max) by Anthropic holds #1 Reasoning Crown</title>
+      <link>./?selected=claude-fable-5-2</link>
+      <guid isPermaLink="false">model-hall-claude-fable-5-2-2026-11</guid>
+      <pubDate>Fri, 13 Nov 2026 12:00:00 GMT</pubDate>
+      <description>Anthropic's Senior Partner leads the Artificial Analysis Index at 65 for high-stakes legal redlines and gnarly architecture debugging ($26.54/task, Vision/PDF + Code).</description>
+    </item>
+
+    <item>
+      <title>FRIDAY DROP: GPT-6.2 Astra &amp; GPT-6.2 Sol by OpenAI add Native Image Gen + Voice</title>
+      <link>./?selected=gpt-6-2-sol</link>
+      <guid isPermaLink="false">model-hall-gpt-6-2-family-2026-10</guid>
+      <pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+      <description>OpenAI's Strategist ($4.00/task, AA 62) and All-Round Daily Workhorse ($1.01/task, AA 57) combine strong coding, conversational audio, and native visual/image creation.</description>
+    </item>
+
+    <item>
+      <title>FRIDAY DROP: Muse Ember (Max) by Meta clocks 5.3s reply time at 14¢/task</title>
+      <link>./?selected=muse-ember</link>
+      <guid isPermaLink="false">model-hall-muse-ember-2026-10</guid>
+      <pubDate>Fri, 30 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Meta's Instant Sprinter brings penny-level triage for bulk email sorting, receipt OCR, and flashcards—powering 90% cost savings in 2-Person Team Splits.</description>
+    </item>
+  </channel>
+</rss>

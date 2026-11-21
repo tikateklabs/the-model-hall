@@ -1,0 +1,443 @@
+[
+  {
+    "id": "claude-fable-5-2",
+    "name": "Claude Fable 5.2 (Max)",
+    "shortName": "Claude Fable 5.2",
+    "codename": "THE MASTERMIND",
+    "provider": "Anthropic",
+    "labId": "anthropic",
+    "labColor": "#C86442",
+    "specialtyWing": "reasoning_audit",
+    "license": "proprietary_api",
+    "isFlagship": true,
+    "launchedLabel": "Nov 2026",
+    "zone": "corner_office",
+    "seniority": "principal",
+    "seniorityLabel": "Principal",
+    "title": "The Senior Partner",
+    "feeTier": "$$$$",
+    "costPerTaskUsd": 26.54,
+    "aaIndex": 65,
+    "firstTokenSec": 247,
+    "contextWindow": "1M",
+    "traits": { "thinking": 99, "honesty": 96, "clarity": 94, "creativity": 86, "speed": 20 },
+    "modalities": { "text": true, "vision": true, "video": false, "audio": false, "code": true, "imageGen": false, "videoGen": false },
+    "bestFor": [
+      "Forensic legal redlines, gnarly multi-file architecture bugs & zero-bluff audits",
+      "High-stakes writing where nuance and intellectual honesty matter most"
+    ],
+    "avoidFor": [
+      "Native video watching, raw audio analysis, or generating images/videos",
+      "Bulk sorting or quick replies (4+ min wait at $26.54/task)"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 65,
+      "codingScore": "#1 Tier · SWE-bench Verified",
+      "multimodalScore": "Vision & PDF only (No Video/Audio)",
+      "gpqaScore": "Top-tier GPQA & Legal Calibration"
+    },
+    "verifiedBenchmarkIds": ["artificial_analysis", "swebench", "stanford_helm", "epoch_ai"],
+    "watchOutFor": "Takes its sweet time and bills executive rates—wildly overqualified for sorting emails or quick summaries.",
+    "speechBubble": "Hand me your gnarliest contract or bug—just don't rush me.",
+    "appearance": { "skinTone": "#E8C3A9", "hairColor": "#CBD5E1", "hairStyle": "silver_part", "shirtColor": "#C86442", "accentColor": "#7C3A23", "pantsColor": "#1E293B", "hasGlasses": true, "prop": "fountain_pen" },
+    "deskSlot": 2,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Measured & Boundary-Firm",
+        "response": "Hi Alex — I saw the request for Sunday hours. I'm protected on family commitments this weekend and won't be able to log on. To keep Monday on track, I've documented the two open blockers in the tracker and can block 8:00–10:00 AM Monday to close them first thing. Let me know which one you'd like prioritized.",
+        "editorialNote": "Balances firm personal boundaries with executive ownership—zero guilt-tripping and immediately de-risks Monday."
+      },
+      "lease_clause": {
+        "approachTag": "Forensic & Redline-Ready",
+        "response": "RED FLAG — Section 14(b) ('Automatic Renewal & Operating Pass-Through'): Two interlocking traps here. First, a 90-day silent auto-renewal window locks you into another 12 months unless notice arrives by certified mail. Second, 'unscheduled capital improvements' shifts roof/HVAC repairs onto the tenant without a cap. Proposed redline: strike capital improvements, cap pass-throughs at 3% YoY, and convert renewal to 30-day mutual written consent.",
+        "editorialNote": "Catches both the obvious auto-renewal trap and the subtle hidden capital-repair pass-through, then drafts an actionable redline."
+      }
+    }
+  },
+  {
+    "id": "gemini-4-neon",
+    "name": "Gemini 4 Neon (Xhigh)",
+    "shortName": "Gemini 4 Neon",
+    "codename": "THE POLY-HACKER",
+    "provider": "Google",
+    "labId": "google",
+    "labColor": "#2563EB",
+    "specialtyWing": "multimodal_vision_video",
+    "license": "proprietary_api",
+    "isFlagship": true,
+    "launchedLabel": "Nov 2026 · Just Dropped",
+    "zone": "corner_office",
+    "seniority": "principal",
+    "seniorityLabel": "Principal",
+    "title": "The Sharp Polymath",
+    "badge": "NEW HIRE",
+    "feeTier": "$$$",
+    "costPerTaskUsd": 6.44,
+    "aaIndex": 61,
+    "firstTokenSec": 56.5,
+    "contextWindow": "1M",
+    "traits": { "thinking": 94, "honesty": 91, "clarity": 90, "creativity": 88, "speed": 68 },
+    "modalities": { "text": true, "vision": true, "video": true, "audio": true, "code": true, "imageGen": false, "videoGen": false },
+    "bestFor": [
+      "Native long-video analysis, raw audio + screenshot debugging & massive 1M codebases",
+      "Partner-level reasoning that starts answering ~4x faster than rival Principals"
+    ],
+    "avoidFor": [
+      "Generating finished photos or video clips directly (pair with Imagen 4 / Veo 3)",
+      "Cheap bulk sorting of 1,000 routine emails ($6.44/task is overkill)"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 61,
+      "codingScore": "Top-3 SWE-bench & LiveCodeBench",
+      "multimodalScore": "#1 Tier · Native Video + Audio + MMMU-Pro",
+      "gpqaScore": "Frontier Science & Multimodal Reasoning"
+    },
+    "verifiedBenchmarkIds": ["artificial_analysis", "mmmu_pro", "swebench", "livebench"],
+    "watchOutFor": "Freshly promoted heavyweight—starts answering ~4x faster than rival partners, but still pricey for simple bulk chores.",
+    "speechBubble": "Just walked in this week. Drop a repo, video, or deep research brief—I'm ready.",
+    "appearance": { "skinTone": "#D9A886", "hairColor": "#4A3728", "hairStyle": "short_sweep", "shirtColor": "#2563EB", "accentColor": "#E85D4A", "pantsColor": "#1E293B", "prop": "tablet" },
+    "deskSlot": 0,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Crisp & Solution-Oriented",
+        "response": "Hi Alex, I can't make Sunday work—I'm offline with family commitments. I can shift my Monday morning standup and knock out the deliverable by noon instead, or hand off my current draft to Jordan before Friday EOD so the team isn't blocked. Which path works best?",
+        "editorialNote": "Direct, modern, and brisk—offers two concrete alternatives without over-explaining personal reasons."
+      },
+      "lease_clause": {
+        "approachTag": "Structured Risk Matrix",
+        "response": "Three clauses need negotiation before signing: (1) Sec. 14(b) Evergreen Auto-Renewal requires 90-day certified notice—easy to miss; (2) Sec. 14(b) uncapped capital-expense pass-through exposes you to surprise HVAC/roof bills; (3) Sec. 19 Joint & Several Liability holds you liable for co-tenant defaults. Priority ask: remove capital improvements and shorten notice to 30 days via email.",
+        "editorialNote": "Fastest Principal turnaround (~56s) with crisp bulleted risk triage and cross-section clause checks."
+      }
+    }
+  },
+  {
+    "id": "gpt-6-2-astra",
+    "name": "GPT-6.2 Astra (Max)",
+    "shortName": "GPT-6.2 Astra",
+    "codename": "THE ARCHITECT",
+    "provider": "OpenAI",
+    "labId": "openai",
+    "labColor": "#0F766E",
+    "specialtyWing": "reasoning_audit",
+    "license": "proprietary_api",
+    "isFlagship": true,
+    "launchedLabel": "Oct 2026",
+    "zone": "corner_office",
+    "seniority": "principal",
+    "seniorityLabel": "Principal",
+    "title": "The Deep Strategist",
+    "feeTier": "$$$",
+    "costPerTaskUsd": 4.00,
+    "aaIndex": 62,
+    "firstTokenSec": 186.8,
+    "contextWindow": "1M",
+    "traits": { "thinking": 95, "honesty": 90, "clarity": 87, "creativity": 89, "speed": 36 },
+    "modalities": { "text": true, "vision": true, "video": false, "audio": true, "code": true, "imageGen": true, "videoGen": false },
+    "bestFor": [
+      "Multi-step business strategy, board teardowns & generating crisp visual concepts",
+      "High-IQ Principal depth at ~6.6x lower cost than Claude Fable 5.2"
+    ],
+    "avoidFor": [
+      "Watching raw long-form video streams natively (Google Gemini territory)",
+      "Impatient real-time chats—pauses ~3 minutes to think before speaking"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 62,
+      "codingScore": "Frontier Coding & System Design",
+      "multimodalScore": "Vision + Audio + Native Image Gen",
+      "gpqaScore": "Top-2 Math, Strategy & LiveBench"
+    },
+    "verifiedBenchmarkIds": ["artificial_analysis", "livebench", "lmarena", "epoch_ai"],
+    "watchOutFor": "Loves structured frameworks and deep planning, but waits ~3 minutes before speaking and occasionally over-hedges.",
+    "speechBubble": "Give me a complex roadmap, pitch visual, or strategy knot to untangle.",
+    "appearance": { "skinTone": "#F0D0B8", "hairColor": "#94A3B8", "hairStyle": "glasses_part", "shirtColor": "#0F766E", "accentColor": "#D99B43", "pantsColor": "#111827", "hasGlasses": true, "prop": "strategy_chart" },
+    "deskSlot": 1,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Diplomatic & Structured",
+        "response": "Thanks for flagging the crunch, Alex. I'm unavailable on Sunday due to prior personal plans, so I won't be able to join the weekend push. That said, I've mapped the remaining scope into must-have vs. Tuesday items—if we cut scope item #3 for Monday's review, we still hit the launch milestone cleanly.",
+        "editorialNote": "Reframes the overtime ask as a prioritization question—classic strategist move, though slightly longer to draft."
+      },
+      "lease_clause": {
+        "approachTag": "Clause-by-Clause Brief",
+        "response": "Key Risk Summary: Section 14(b) creates asymmetric downside. While standard commercial leases allow operating-expense adjustments, lumping 'capital improvements' into routine CAM fees without amortization or a percentage cap transfers landlord structural risk to you. Additionally, the 90-day certified-mail renewal trigger is punitive. Recommend countering with a 5% annual CAM cap and email notice.",
+        "editorialNote": "Delivers strong legal-commercial framing at ~1/6th Claude Fable's cost, though takes ~3 minutes to think through."
+      }
+    }
+  },
+  {
+    "id": "gpt-6-2-sol",
+    "name": "GPT-6.2 Sol (Max)",
+    "shortName": "GPT-6.2 Sol",
+    "codename": "THE WORKHORSE",
+    "provider": "OpenAI",
+    "labId": "openai",
+    "labColor": "#0F766E",
+    "specialtyWing": "coding_agents",
+    "license": "proprietary_api",
+    "isFlagship": true,
+    "launchedLabel": "Oct 2026",
+    "zone": "mid_level",
+    "seniority": "specialist",
+    "seniorityLabel": "Specialist",
+    "title": "The Economical Workhorse",
+    "feeTier": "$",
+    "costPerTaskUsd": 1.01,
+    "aaIndex": 57,
+    "firstTokenSec": 82.5,
+    "contextWindow": "1M",
+    "traits": { "thinking": 88, "honesty": 85, "clarity": 86, "creativity": 84, "speed": 74 },
+    "modalities": { "text": true, "vision": true, "video": false, "audio": true, "code": true, "imageGen": true, "videoGen": false },
+    "bestFor": [
+      "Daily unit tests, question papers, voice memos & brochure visuals for ~$1/task",
+      "Best all-around Swiss Army knife combining Text, Code, Audio & Image Gen"
+    ],
+    "avoidFor": [
+      "Raw multi-minute video ingestion (switch to Google Gemini 4 Neon/Hydrogen)",
+      "Zero-tolerance M&A legal traps without a Principal second pass"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 57,
+      "codingScore": "Strong Daily Engineering ($1/task)",
+      "multimodalScore": "Vision + Voice + Native Image Gen",
+      "gpqaScore": "88% of Principal IQ at 4% of Fable's cost"
+    },
+    "verifiedBenchmarkIds": ["artificial_analysis", "lmarena", "swebench"],
+    "watchOutFor": "Delivers ~88% of partner-level judgment at a tiny fraction of the bill, though rare legal/code edge cases still warrant a quick glance.",
+    "speechBubble": "Strong daily output, image gen included, sensible $1 invoice.",
+    "appearance": { "skinTone": "#9C6B4B", "hairColor": "#1E293B", "hairStyle": "cropped_fade", "shirtColor": "#1F7A73", "accentColor": "#E6A23C", "pantsColor": "#334155", "prop": "drafting_pen" },
+    "deskSlot": 0,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Practical & Balanced",
+        "response": "Hi Alex, I won't be able to work this Sunday as I have personal plans I can't move. I'll wrap up the core pieces before I log off Friday and jump straight on the rest first thing Monday morning. Let me know if you want to align for 10 minutes Friday afternoon.",
+        "editorialNote": "Clear, respectful, and ready to send verbatim—hits the sweet spot for everyday professional boundaries at $1.01."
+      },
+      "lease_clause": {
+        "approachTag": "Solid First-Pass Audit",
+        "response": "Watch out for Section 14(b): it auto-renews for a full year unless you send certified mail 90 days ahead, and it lets the landlord bill you for 'capital improvements' on top of rent. Ask to change auto-renewal to month-to-month and exclude major building repairs.",
+        "editorialNote": "Spots both main traps clearly and affordably, though skips deeper secondary clauses like co-tenant liability."
+      }
+    }
+  },
+  {
+    "id": "gemini-4-hydrogen",
+    "name": "Gemini 4 Hydrogen (Xhigh)",
+    "shortName": "Gemini 4 Hydrogen",
+    "codename": "THE ARCHIVIST",
+    "provider": "Google",
+    "labId": "google",
+    "labColor": "#2563EB",
+    "specialtyWing": "multimodal_vision_video",
+    "license": "proprietary_api",
+    "isFlagship": true,
+    "launchedLabel": "Oct 2026",
+    "zone": "mid_level",
+    "seniority": "specialist",
+    "seniorityLabel": "Specialist",
+    "title": "The Long-Doc All-Rounder",
+    "feeTier": "$$",
+    "costPerTaskUsd": 3.16,
+    "aaIndex": 54,
+    "firstTokenSec": 49.4,
+    "contextWindow": "1M",
+    "traits": { "thinking": 84, "honesty": 83, "clarity": 85, "creativity": 86, "speed": 80 },
+    "modalities": { "text": true, "vision": true, "video": true, "audio": true, "code": true, "imageGen": false, "videoGen": false },
+    "bestFor": [
+      "Digesting 100-page PDFs, 30-min lecture videos, podcasts & lesson plans quickly",
+      "Most affordable specialist with true native Video + Audio + Vision + 1M context"
+    ],
+    "avoidFor": [
+      "Direct image/video generation (hand rendering to Imagen 4, Flux 2, or Veo 3)",
+      "Short 2-line emails where GPT-6.2 Sol or Muse Ember cost way less"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 54,
+      "codingScore": "Solid Full-Stack & Repo Context",
+      "multimodalScore": "Full Native Video + Audio + Long-PDF",
+      "gpqaScore": "High Long-Context Recall (1M tokens)"
+    },
+    "verifiedBenchmarkIds": ["artificial_analysis", "mmmu_pro", "lmarena"],
+    "watchOutFor": "Great stamina on massive PDFs, lesson plans, and brochures, though slightly pricier than Sol for plain short tasks.",
+    "speechBubble": "Drop a 100-page report, lecture video, or audio recording—I read fast.",
+    "appearance": { "skinTone": "#EBC6AC", "hairColor": "#8C5230", "hairStyle": "wavy_bun", "shirtColor": "#3B82F6", "accentColor": "#E85D4A", "pantsColor": "#334155", "prop": "binder" },
+    "deskSlot": 1,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Warm & Collaborative",
+        "response": "Hey Alex — I know this launch is tight, and I wish I could help Sunday, but I'm committed offline this weekend. I've left clean notes in the shared doc so nothing stalls, and I'm happy to start early Monday at 8 AM to get everything across the finish line.",
+        "editorialNote": "Naturally warm without sounding submissive—great for collaborative teams, teachers, and creative studios."
+      },
+      "lease_clause": {
+        "approachTag": "Plain-English Breakdown",
+        "response": "Two clauses stand out in this lease: (1) The 90-day auto-renewal in Section 14(b) requires physical certified mail—easy to miss if you forget three months ahead. (2) 'Capital improvements' wording could stick you with part of a roof replacement. Recommend requesting an explicit cap and email notice before signing.",
+        "editorialNote": "Translates legalese into crisp, readable plain English—ideal when digesting a 60-page lease packet fast."
+      }
+    }
+  },
+  {
+    "id": "deepseek-v4-1-flash",
+    "name": "DeepSeek V4.1 Flash",
+    "shortName": "DeepSeek V4.1 Flash",
+    "codename": "THE CODE PURIST",
+    "provider": "DeepSeek",
+    "labId": "deepseek",
+    "labColor": "#4338CA",
+    "specialtyWing": "coding_agents",
+    "license": "open_weight",
+    "isFlagship": true,
+    "launchedLabel": "Sep 2026",
+    "zone": "mid_level",
+    "seniority": "specialist",
+    "seniorityLabel": "Specialist",
+    "title": "The Pragmatic Engineer",
+    "feeTier": "$",
+    "costPerTaskUsd": 0.60,
+    "aaIndex": 33,
+    "firstTokenSec": 45.2,
+    "contextWindow": "1M",
+    "traits": { "thinking": 76, "honesty": 74, "clarity": 78, "creativity": 68, "speed": 84 },
+    "modalities": { "text": true, "vision": false, "video": false, "audio": false, "code": true, "imageGen": false, "videoGen": false },
+    "bestFor": [
+      "Bargain-rate ($0.60) open-weight JSON log parsing, SQL scripts & pure code refactoring",
+      "Zero-fluff technical checklists self-hostable on private clusters"
+    ],
+    "avoidFor": [
+      "ANY visual, screenshot, PDF chart, audio, video, or image-gen task (Text & Code only!)",
+      "Delicate diplomatic emails or unreviewed high-stakes legal audits"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 33,
+      "codingScore": "High Value-per-Dollar Pure Code",
+      "multimodalScore": "Text & Code Purist (No Vision/Audio/Video)",
+      "gpqaScore": "Open-Weight Logic at $0.60/task"
+    },
+    "verifiedBenchmarkIds": ["hf_open_llm", "swebench", "artificial_analysis"],
+    "watchOutFor": "Bargain-rate logic and clean code helper, but blunt in tone and completely blind to images, audio, and video.",
+    "speechBubble": "Pure text & code logic, $0.60 flat, zero corporate small talk.",
+    "appearance": { "skinTone": "#D6A37E", "hairColor": "#1E293B", "hairStyle": "curly_crop", "shirtColor": "#4338CA", "accentColor": "#E6A23C", "pantsColor": "#1E293B", "prop": "laptop" },
+    "deskSlot": 2,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Ultra-Direct & Concise",
+        "response": "Alex, I'm not available to work Sunday. I will finish tasks A and B by Friday 5 PM and pick up task C Monday at 9 AM.",
+        "editorialNote": "Zero corporate fluff—efficient and honest, though some managers may read the tone as slightly abrupt."
+      },
+      "lease_clause": {
+        "approachTag": "Minimalist Checklist",
+        "response": "Flagged items: 1. Sec 14(b) 90-day auto-renewal (high lock-in risk). 2. Capital improvement pass-through (uncapped cost). Action: negotiate both before signing.",
+        "editorialNote": "Spots the core defects for $0.60, but gives no negotiation phrasing and warrants a human or Principal review."
+      }
+    }
+  },
+  {
+    "id": "muse-ember",
+    "name": "Muse Ember (Max)",
+    "shortName": "Muse Ember",
+    "codename": "THE WHEELMAN",
+    "provider": "Meta",
+    "labId": "meta",
+    "labColor": "#6D28D9",
+    "specialtyWing": "bulk_triage",
+    "license": "open_weight",
+    "isFlagship": true,
+    "launchedLabel": "Oct 2026",
+    "zone": "front_desk",
+    "seniority": "associate",
+    "seniorityLabel": "Associate",
+    "title": "The Instant Sprinter",
+    "feeTier": "¢",
+    "costPerTaskUsd": 0.14,
+    "aaIndex": 36,
+    "firstTokenSec": 5.3,
+    "contextWindow": "1M",
+    "traits": { "thinking": 68, "honesty": 66, "clarity": 74, "creativity": 76, "speed": 99 },
+    "modalities": { "text": true, "vision": true, "video": false, "audio": false, "code": false, "imageGen": false, "videoGen": false },
+    "bestFor": [
+      "5.3-second instant getaway speed at 14¢/task—sorting 1,000 emails, receipts & flashcards",
+      "Running the cheap 90% first pass before a Principal audits the risky 10%"
+    ],
+    "avoidFor": [
+      "High-stakes contracts, complex software debugging, or audio/video/image jobs",
+      "Anything where missing a hidden trap costs real money"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 36,
+      "codingScore": "Basic Snippets Only (Not an Engineer)",
+      "multimodalScore": "Fast Text + Image OCR / Receipt Scan",
+      "gpqaScore": "#1 Fastest First Token (5.3s) · $0.14/task"
+    },
+    "verifiedBenchmarkIds": ["artificial_analysis", "hf_open_llm"],
+    "watchOutFor": "Answers in ~5 seconds for pennies—unbeatable for bulk sorting and flashcards, but never trust alone on high-stakes contracts.",
+    "speechBubble": "1,000 emails, receipts, or flashcards? Done in 5 seconds.",
+    "appearance": { "skinTone": "#E3B89A", "hairColor": "#5C4033", "hairStyle": "short_sweep", "shirtColor": "#7C3AED", "accentColor": "#E85D4A", "pantsColor": "#1E293B", "prop": "stopwatch" },
+    "deskSlot": 1,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Instant & Breezy",
+        "response": "Hey Alex! Sorry, I can't do Sunday—got personal stuff already locked in. Happy to crush it first thing Monday morning though!",
+        "editorialNote": "Arrives in 5 seconds for pennies—fine for a casual Slack ping, a bit informal for a tense executive thread."
+      },
+      "lease_clause": {
+        "approachTag": "Surface Scan (Needs Review)",
+        "response": "Heads up—Section 14(b) has an automatic renewal clause that needs 90 days notice! Everything else looks pretty standard for a rental lease.",
+        "editorialNote": "WARNING: Catches the auto-renewal headline in 5 seconds, but completely misses the uncapped capital-repair trap!"
+      }
+    }
+  },
+  {
+    "id": "gpt-6-luna",
+    "name": "GPT-6 Luna (Max)",
+    "shortName": "GPT-6 Luna",
+    "codename": "THE FIXER",
+    "provider": "OpenAI",
+    "labId": "openai",
+    "labColor": "#0F766E",
+    "specialtyWing": "bulk_triage",
+    "license": "proprietary_api",
+    "isFlagship": true,
+    "launchedLabel": "Sep 2026",
+    "zone": "front_desk",
+    "seniority": "associate",
+    "seniorityLabel": "Associate",
+    "title": "The Friendly Concierge",
+    "feeTier": "¢",
+    "costPerTaskUsd": 0.15,
+    "aaIndex": 28,
+    "firstTokenSec": 65.5,
+    "contextWindow": "1M",
+    "traits": { "thinking": 60, "honesty": 64, "clarity": 82, "creativity": 80, "speed": 90 },
+    "modalities": { "text": true, "vision": true, "video": false, "audio": true, "code": false, "imageGen": false, "videoGen": false },
+    "bestFor": [
+      "Warm 15¢ everyday messages, voice-note replies, trip itineraries & friendly outlines",
+      "Natural human bedside manner when you want charm over cold logic"
+    ],
+    "avoidFor": [
+      "Ruthless contract audits, heavy coding, video analysis, or image generation",
+      "Critiquing bad ideas—tends to be overly polite and agreeable"
+    ],
+    "benchmarkScores": {
+      "aaIndex": 28,
+      "codingScore": "Non-Engineering Concierge Tier",
+      "multimodalScore": "Text + Vision + Conversational Voice",
+      "gpqaScore": "High Warmth & Clarity at $0.15/task"
+    },
+    "verifiedBenchmarkIds": ["artificial_analysis", "lmarena"],
+    "watchOutFor": "Warm, polite, and cheap for everyday emails and travel ideas—but tends to be overly agreeable if asked to critique bad logic.",
+    "speechBubble": "Need a warm reply, voice summary, or trip plan? Happy to help!",
+    "appearance": { "skinTone": "#F2D2BC", "hairColor": "#7B4B2A", "hairStyle": "ponytail", "shirtColor": "#14B8A6", "accentColor": "#E85D4A", "pantsColor": "#334155", "prop": "clipboard" },
+    "deskSlot": 0,
+    "trialShifts": {
+      "sunday_overtime": {
+        "approachTag": "Warm & Diplomatic",
+        "response": "Hi Alex, thank you so much for reaching out! I really appreciate how hard everyone is working on this, and I'd love to help, though I do have family commitments this Sunday so I won't be available. I'd be more than happy to jump in bright and early Monday!",
+        "editorialNote": "Charming, polite, and only 15¢—slightly apologetic, which works nicely for low-conflict everyday messages."
+      },
+      "lease_clause": {
+        "approachTag": "Overly Reassuring (Needs Review)",
+        "response": "Overall this looks like a well-organized lease! You may want to put a calendar reminder for the 90-day renewal notice in Section 14(b), and maybe double-check what repairs are included with your landlord just to be safe.",
+        "editorialNote": "WARNING: Soft-pedals a serious financial trap to stay polite—classic reason not to trust a Front-Desk Associate solo on legal stakes."
+      }
+    }
+  }
+]
